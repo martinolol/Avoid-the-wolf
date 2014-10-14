@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/famille/AndroidstudioProjects/Avoid-the-wolf/app/build/intermediates/pre-dexed/debug/firebase-client-android-1.1.1-69360c7d559a6e251a08aabf8dce1411166731bf.jar"
+        jar="/Users/famille/AndroidstudioProjects/Avoid-the-wolf/app/libs/firebase-client-android-1.1.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="083aee62faa9c7db01c433036e56cdaced3a51ea"/>
+
+</pre-dex-items>

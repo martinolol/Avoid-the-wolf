@@ -9,9 +9,9 @@ public class IntersectionManager {
     }
 
     public static boolean isPointInCircle(Position pointPos, Position circlePos, float circleRadius){
-        Log.d("IntersectionManager", "pointPos(" + pointPos.x + ";" + pointPos.y + ")");
-        Log.d("IntersectionManager", "circlePos(" + circlePos.x + ";" + circlePos.y + ")");
-        Log.d("IntersectionManager", "circleRadius : " + circleRadius);
+        //Log.d("IntersectionManager", "pointPos(" + pointPos.x + ";" + pointPos.y + ")");
+        //Log.d("IntersectionManager", "circlePos(" + circlePos.x + ";" + circlePos.y + ")");
+        //Log.d("IntersectionManager", "circleRadius : " + circleRadius);
 
         if(Distance.getDistance(pointPos, circlePos) <= circleRadius){
             return true;

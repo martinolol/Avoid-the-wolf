@@ -18,6 +18,11 @@ public class Player {
         pos.y = y;
     }
 
+    public void setPos(Position pos){
+        this.pos.x = pos.x;
+        this.pos.y = pos.y;
+    }
+
     public Position getPos(){
         return pos;
     }
