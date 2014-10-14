@@ -18,6 +18,10 @@ public class Player {
         pos.y = y;
     }
 
+    public Position getPos(){
+        return pos;
+    }
+
     public float getPosX(){
         return pos.x;
     }

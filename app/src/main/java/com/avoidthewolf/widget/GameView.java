@@ -9,10 +9,13 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.avoidthewolf.R;
+import com.avoidthewolf.utils.IntersectionManager;
 import com.avoidthewolf.utils.Player;
 import com.avoidthewolf.utils.Position;
 
 public class GameView extends View {
+
+    private TouchManager touchManager;
 
     private float characterRadius;
 
@@ -38,15 +41,21 @@ public class GameView extends View {
     }
 
     private void init(){
+        touchManager = new TouchManager();
+
         characterRadius = 0;
         player = new Player();
         opponent = new Player();
 
-        paintPlayer = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintPlayer.setColor(Color.BLUE);
+        player.setWolf(false);
+        opponent.setWolf(true);
 
+        paintPlayer = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintOpponent = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintOpponent.setColor(Color.RED);
+
+        paintPlayer.setColor(player.isWolf() ? Color.RED : Color.BLUE);
+        paintOpponent.setColor(opponent.isWolf() ? Color.RED : Color.BLUE);
+
     }
 
     @Override
@@ -63,13 +72,35 @@ public class GameView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event){
-
-        player.setPos(event.getX(), event.getY());
-        invalidate();
-
-        return true;
+        return touchManager.onTouch(event);
     }
 
+    private class TouchManager{
+
+        public TouchManager(){
+
+        }
+
+        public boolean onTouch(MotionEvent event){
+
+            if(event.getAction() == MotionEvent.ACTION_DOWN){
+                if(!IntersectionManager.isPointInCircle(new Position(event.getX(), event.getY()), player.getPos(), characterRadius)){
+                    return false;
+                }
+
+            }else if(event.getAction() == MotionEvent.ACTION_MOVE){
+
+                player.setPos(event.getX(), event.getY());
+                invalidate();
+
+            }else if(event.getAction() == MotionEvent.ACTION_UP){
+                return false;
+            }
+
+            return true;
+        }
+
+    }
 
 
 }
